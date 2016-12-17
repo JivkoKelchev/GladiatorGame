@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <legend>Its your turn!!</legend>
+
+    <div class="row fight">
+        <div class="col-xs-5 list">
+            <legend>Gladiator: {{ ownGlad.name }}</legend>
+            <div class="row">
+
+                <div class="col-xs-3 armor-big">
+                    {{ render(controller(
+                    'GameBundle:Gladiator:renderArmorEquipped',{"gladiator" : ownGlad }
+                    )) }}
+                </div>
+                <div class="col-xs-8">
+                    Level: {{ ownGlad.level }} <br>
+                    XP: {{ ownGlad.xP }} <br>
+                    Str: {{ ownGlad.gladStats.str }} <br>
+                    Dex: {{ ownGlad.gladStats.dex }} <br>
+                    Int: {{ ownGlad.gladStats.intelligence }} <br>
+                    {{ render(controller(
+                    'GameBundle:StatsRender:renderAttMinMax',{"id" : ownGlad.id }
+                    )) }}
+                    {{ render(controller(
+                    'GameBundle:StatsRender:renderDef',{"id" : ownGlad.id }
+                    )) }}
+                    {{ render(controller('GameBundle:Gladiator:renderHpStats',{"gladiator" : ownGlad })) }}
+                    {{ render(controller('GameBundle:Gladiator:renderWeaponsEquipped',{"gladiator" : ownGlad })) }}
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-xs-5 list">
+            <legend>Gladiator: {{ opponent.name }}</legend>
+            <div class="row">
+                <div class="col-xs-8">
+                    Level: {{ opponent.level }} <br>
+                    XP: {{ opponent.xP }} <br>
+                    Str: {{ opponent.gladStats.str }} <br>
+                    Dex: {{ opponent.gladStats.dex }} <br>
+                    Int: {{ opponent.gladStats.intelligence }} <br>
+                    {{ render(controller('GameBundle:StatsRender:renderAttMinMax',{"id" : opponent.id })) }}
+                    {{ render(controller('GameBundle:StatsRender:renderDef',{"id" : opponent.id })) }}
+                    {{ render(controller('GameBundle:Gladiator:renderHpStats',{"gladiator" : opponent })) }}
+                    {{ render(controller('GameBundle:Gladiator:renderWeaponsEquipped',{"gladiator" : opponent })) }}
+
+                </div>
+                <div class="col-xs-3 armor-big">
+                    {{ render(controller(
+                    'GameBundle:Gladiator:renderArmorEquipped',{"gladiator" : opponent }
+                    )) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="width:100%;padding: auto">
+        <a href="{{ path('dices', {'id': ownGlad.id}) }}" class="btn btn-primary" role="button">Throw dices!</a>
+    </div>
+
+
+{% endblock %}
+

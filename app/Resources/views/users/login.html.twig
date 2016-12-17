@@ -1,0 +1,14 @@
+<form name="authenticate" action="{{ path('security_login') }}" method="post">
+    <div>
+        <label for="username">Username :</label>
+        <input id="username" type="text" name="_username">
+    </div>
+    <div>
+        <label for="password">Password :</label>
+        <input id="password" type="password" name="_password">
+    </div>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    <div>
+        <input type="submit" name="login">
+    </div>
+</form>

@@ -1,0 +1,5 @@
+{% if check %}
+    <a href="{{ path('next_round', {'id': gladiator.id}) }}">This Gladiator is in fight...</a>
+{% else %}
+    <a href="{{ path('arena', {'id': gladiator.id}) }}" class="btn btn-primary" role="button">Go to Arena!</a>
+{% endif %}

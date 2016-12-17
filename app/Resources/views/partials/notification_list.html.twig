@@ -1,0 +1,12 @@
+<legend>Notifications</legend>
+{% for notification in notifications %}
+    <div class="row jivko">
+        <div class="col-xs-4">
+            {{ notification.time|date('Y-m-d H:i:s') }}
+        </div>
+        <div class="col-xs-8">
+            <a href="{{ path('delete_notification', {'notId': notification.id}) }}" style="color: green">{{ notification.msg }}</a>
+        </div>
+    </div>
+{% endfor %}
+

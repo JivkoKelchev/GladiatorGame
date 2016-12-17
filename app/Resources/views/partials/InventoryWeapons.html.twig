@@ -1,0 +1,22 @@
+<ul>
+    {% for weapon in weapons %}
+        <li >
+            <div class="row">
+                <div class="col-xs-6">
+                    <img class="weapon" src="{{ asset('/Images/Weapons/'~weapon.weapons.img~'.png') }}">
+
+                </div>
+                <div class="col-xs-6">
+                    <h4>{{ weapon.weapons.name}}</h4>
+                    att: +{{ weapon.weapons.attackModify }}
+                    {% if weapon.equipped == 1 %}
+                        <span style="color: green">Equipped</span>
+                    {% else %}
+                        <a href="{{ path('equip_weapon',{'gladId':gladiator.id,'weaponId':weapon.weapons.id}) }}">Use this weapon </a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </li>
+    {% endfor %}
+</ul>

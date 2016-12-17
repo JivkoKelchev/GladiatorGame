@@ -1,0 +1,22 @@
+<ul>
+    {% for armor in armors %}
+    <li class="item">
+        <div class="row">
+            <div class="col-xs-6 armor">
+                <img src="{{ asset('/Images/Armors/'~armor.armor.img~'.png') }}"><br>
+
+            </div>
+            <div class="col-xs-6">
+                <h3>{{ armor.armor.name }}</h3>
+                def: +{{ armor.armor.defModify }}
+                {% if armor.equipped==0 %}
+                <a href="{{ path('equip_armor',{'gladId':gladiator.id,'armorId':armor.armor.id}) }}">Use this armor </a>
+                {% else %}
+                <span style="color: green">Equipped</span>
+                {% endif %}
+            </div>
+
+        </div>
+    </li>
+    {% endfor %}
+</ul>

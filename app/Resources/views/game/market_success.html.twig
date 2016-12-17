@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+ <div class="list">
+    <p>You just buy item for gladiator {{ glad.name }}</p>
+
+    <a href="{{ path('market', {'id': glad.id}) }}">Go for more shoping</a><br>
+
+    or <br>
+
+    <a href="{{ path('gladiator_stats', {'id': glad.id}) }}">Go back to gladiator's menu</a>
+ </div>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<div class="list">
+    <div style="color: green">
+        You throw :<br>
+        att dice : {{ dices['attDice'] }}<br>
+        def dice : {{ dices ['defDice'] }}
+    </div>
+
+    {% if dices['roundResult'][2] != '' %}
+    <div style="color: red">
+        Your opponent throw:<br>
+        att dice : {{ dices['opponentDices'][0] }}<br>
+        def dice : {{ dices['opponentDices'][1] }}
+    </div>  <br>
+    <div>
+        <p>This round is over.<br>
+        You made {{ dices['roundResult'][4] }} damage points to your opponent.<br>
+        Your opponent made {{ dices['roundResult'][5] }} damage points to you.<br>
+        You have {{ dices['roundResult'][2] }} HP left.
+        Your opponent has {{ dices['roundResult'][3] }} HP left.</p>
+        {% if dices['roundResult'][2] == 0 %}
+        <h3 style="color: red">You lost the battle.</h3>
+        {% endif %}
+        {% if dices['roundResult'][3] == 0 %}
+            <h3 style="color: red">YOU WIN !!!</h3>
+        {% endif %}
+    </div>
+        {% endif %}
+    <div>
+        While waiting your opponent to make his move, you can manage your others gladiators.
+        <a href="{{ path('dashboard') }}">Go to dashbord</a>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6 list ">
+
+            {% for gladiator in user.gladiators %}
+                    <div class="row jivko">
+                        <div class="col-xs-2 armor">
+                            <a href="/gladiator/{{ gladiator.id }}">
+                            {{ render(controller(
+                            'GameBundle:Gladiator:renderArmorEquipped',{"gladiator" : gladiator }
+                            )) }}
+                            </a>
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="row">
+                                <div class="col-xs-78">
+                                    Name : {{ gladiator.name }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    level : {{ gladiator.level }}
+                                    XP : {{ gladiator.xP }}
+                                </div>
+                                <div class="col-xs-7">
+                                {{ render(controller('GameBundle:Gladiator:renderHpStats',{"gladiator" : gladiator})) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            {{ render(controller(
+                            'GameBundle:Fight:checkIfGladIsAtArena',{"gladiator" : gladiator }
+                            )) }}
+                        </div>
+                    </div>
+
+
+            {% endfor %}
+        </div>
+        <div class="col-xs-4 list ">
+            {{ render(controller(
+            'GameBundle:Fight:renderNotification'
+            )) }}
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
+

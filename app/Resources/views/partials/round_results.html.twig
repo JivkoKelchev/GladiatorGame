@@ -1,0 +1,27 @@
+{#roundResult []  #}
+{#$attDice,           //[0]#}
+{#$defDice,           //[1]#}
+{#$opponentAttDice,   //[2]#}
+{#$opponentDefDice,   //[3]#}
+{#$gladDamageDone,    //[4]#}
+{#$opponentDamageDone,//[5]#}
+{#$isRoundFinisehed   //[6]#}
+
+
+{#{{ dump(roundResult) }}#}
+{% if roundResult[6] %}
+<div>
+
+    Last round results:<br>
+    You throw :<br>
+    att dice : {{ roundResult[0] }}<br>
+    def dice : {{ roundResult[1] }}<br>
+    Your opponent throw:<br>
+    att dice : {{ roundResult[2] }}<br>
+    def dice : {{ roundResult[3] }}<br>
+    You made {{ roundResult[4] }} damage points to your opponent.<br>
+    Your opponent made {{ roundResult[5] }} damage points to you.<br>
+
+
+</div>
+{% endif %}

@@ -1,0 +1,18 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: GameBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    register_service:
+        class: GameBundle\Services\RegisterService
+        arguments: []
+    inventory_service:
+        class: GameBundle\Services\InventoryService
+        arguments: []
+    fight_service:
+        class: GameBundle\Services\FightService
+        arguments: ["Doctrine\ORM\EntityManager $em"]

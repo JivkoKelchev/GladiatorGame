@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="list">
+    <p>waiting oponent to connect.....<br><br><br>
+    We will send you a notification when is your turn to fight<br></p>
+    <div>
+        <p>While waiting your opponent to make his move, you can manage your others gladiators.</p>
+        <a href="{{ path('dashboard') }}">Go to dashbord</a>
+    </div>
+    </div>
+{% endblock %}
+

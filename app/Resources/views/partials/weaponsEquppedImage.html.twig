@@ -1,0 +1,7 @@
+{% if images != 1 %}
+    <img class="weapon" src="{{ asset(images) }}">
+{% else %}
+    {#{% for image in images %}#}
+    <h5 style="color: red"> No weapons equipped!!!<br>Better get one.</h5>
+    {#{% endfor %}#}
+{% endif %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-xs-6 list">
+            <legend>Gladiator: {{ gladiator.name }}</legend>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="armor-big">
+                        {{ render(controller('GameBundle:Gladiator:renderArmorEquipped',{"gladiator" : gladiator })) }}
+                    </div>
+                    <div>
+                        {{ render(controller('GameBundle:Gladiator:renderWeaponsEquipped',{"gladiator" : gladiator })) }}
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="jivko">
+                        <div class="glad-color-border">
+                            Str: {{ gladiator.gladStats.str }}
+                            Dex: {{ gladiator.gladStats.dex }}
+                            Int: {{ gladiator.gladStats.intelligence }}
+                        </div>
+                        {{ render(controller('GameBundle:StatsRender:renderAttMinMax',{"id" : gladiator.id })) }}
+                        {{ render(controller('GameBundle:StatsRender:renderDef',{"id" : gladiator.id })) }}
+                        {{ render(controller('GameBundle:StatsRender:renderXpForNexLevel',{"id" : gladiator.id })) }}
+                        {{ render(controller('GameBundle:Gladiator:renderHpStats',{"gladiator" : gladiator})) }}
+                        <div>
+                            {{ render(controller('GameBundle:Fight:checkIfGladIsAtArena',{"gladiator" : gladiator })) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-5  list">
+            <legend>Gladiator Inventory: </legend>
+            <ul class="nav nav-tabs">
+                <li class="active"><a class="glad-color-border" href="#Weapons" data-toggle="tab">Weapons</a></li>
+                <li><a href="#Armor" data-toggle="tab">Armor</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="Weapons">
+                    {{ render(controller('GameBundle:Gladiator:gladInventoryWeapons',{"id" : gladiator.id } )) }}
+                </div>
+                <div class="tab-pane fade" id="Armor">
+                    {{ render(controller('GameBundle:Gladiator:gladInventoryArmor', {"id" : gladiator.id } )) }}
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="{{ path('market', {'id': gladiator.id}) }}" class="btn btn-primary" role="button">MARKET PLACE</a>
+        </div>
+    </div>
+
+{% endblock %}
+

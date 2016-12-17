@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <legend>Welcome to market</legend> <br>
+    <ul class="nav nav-tabs">
+        <li class="active"><a class="glad-color-border" href="#Weapons" data-toggle="tab">Weapons</a></li>
+        <li><a href="#Armor" data-toggle="tab">Armor</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content list">
+        <div class="tab-pane fade active in " id="Weapons">
+            {% for weapon in weapons %}
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img class="weapon" src="{{ asset('/Images/Weapons/'~weapon.img~'.png') }}">
+                    </div>
+                    <div class="col-xs-5">
+                        <p>
+                            {{ weapon.description }}
+                        </p>
+                        <div>
+                            <p>
+                                Cost:{{ weapon.goldCost }}  Required str: {{ weapon.requiredStr }} Type: {{ weapon.type }} handed
+                            </p>
+                            <p style="color: green;"> Attack : +{{ weapon.attackModify }} </p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="{{ path('buy_weapon', {'gladId': gladId, 'weaponId': weapon.id}) }}" class="btn  btn-primary"> Buy </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="tab-pane fade" id="Armor">
+            {% for armor in armors %}
+                <div class="row">
+                    <div class="col-xs-3">
+                        <img class="armor-big" src="{{ asset('/Images/Armors/'~armor.img~'.png') }}">
+                    </div>
+                    <div class="col-xs-5">
+                        <p>
+                            {{ armor.description }}
+                        </p>
+                        <div>
+                            <p>
+                                Cost:{{ armor.goldCost }}  Required str: {{ armor.reqiredStr }} Required level: {{ armor.requiredLevel }}
+                            </p>
+                            <p style="color: green;"> Defence : +{{ armor.defModify }} </p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="{{ path('buy_armor', {'gladId': gladId, 'armorId': armor.id}) }}" class="btn  btn-primary"> Buy </a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
